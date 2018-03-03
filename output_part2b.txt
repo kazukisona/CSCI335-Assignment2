@@ -1,0 +1,25 @@
+#Note that it your result deviates a little bit from
+#the numbers here, you should be OK.
+BinarySearchTree:
+2: 566
+3a: 11.28
+3b: 1.23
+4a: 420
+4b: 5.77
+5a: 161
+5b: 11.81
+6a: 405
+6b: 10.95
+6c: 1.26
+
+AVL Tree:
+2: 566
+3a: 7.38
+3b: 0.8
+4a: 420
+4b: 4.8
+5a: 161
+5b: 9.23
+6a: 405
+6b: 6.89
+6c: 0.79
