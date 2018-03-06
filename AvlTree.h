@@ -19,6 +19,7 @@ using namespace std;
 // boolean isEmpty( )     --> Return true if empty; else false
 // void makeEmpty( )      --> Remove all items
 // void printTree( )      --> Print tree in sorted order
+// void findElement( x )  --> Find an element x in tree
 // ******************ERRORS********************************
 // Throws UnderflowException as warranted
 
@@ -146,6 +147,11 @@ class AvlTree
         remove( x, root );
     }
 
+    void findElement(const Comparable &x ) 
+    {
+        findElement(x, root);
+    }
+
   private:
     struct AvlNode
     {
@@ -170,6 +176,18 @@ class AvlTree
      * t is the node that roots the subtree.
      * Set the new root of the subtree.
      */
+     void findElement(const Comparable &x, AvlNode * &t)
+     {
+        if (t == nullptr)
+            cout << "Not Found" << endl;
+        else if (x < t->element)
+            findElement(x, t->left);
+        else if (t->element < x)
+            findElement(x, t->right);
+        else
+            cout << t->element << endl;
+     }
+
     void insert( const Comparable & x, AvlNode * & t )
     {
         if( t == nullptr )
@@ -292,8 +310,12 @@ class AvlTree
             return contains( x, t->left );
         else if( t->element < x )
             return contains( x, t->right );
-        else
+        else 
+        {
+            t->element.Merge(x);
             return true;    // Match
+        }
+           
     }
 /****** NONRECURSIVE VERSION*************************
     bool contains( const Comparable & x, AvlNode *t ) const

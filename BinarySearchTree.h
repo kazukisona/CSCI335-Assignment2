@@ -155,6 +155,10 @@ class BinarySearchTree
         remove( x, root );
     }
 
+    void findElement(const Comparable &x ) 
+    {
+        findElement(x, root);
+    }
 
   private:
     struct BinaryNode
@@ -179,6 +183,18 @@ class BinarySearchTree
      * t is the node that roots the subtree.
      * Set the new root of the subtree.
      */
+     void findElement(const Comparable &x, BinaryNode * &t)
+     {
+        if (t == nullptr)
+            cout << "Not Found" << endl;
+        else if (x < t->element)
+            findElement(x, t->left);
+        else if (t->element < x)
+            findElement(x, t->right);
+        else
+            cout << t->element << endl;
+     }
+
     void insert( const Comparable & x, BinaryNode * & t )
     {
         if( t == nullptr )
@@ -275,8 +291,11 @@ class BinarySearchTree
             return contains( x, t->left );
         else if( t->element < x )
             return contains( x, t->right );
-        else
+        else {
+            t->element.Merge(x);
             return true;    // Match
+        }
+            
     }
 /****** NONRECURSIVE VERSION*************************
     bool contains( const Comparable & x, BinaryNode *t ) const
